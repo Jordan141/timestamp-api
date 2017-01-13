@@ -13,12 +13,9 @@ app.get('/',(req,res) => {
     res.sendFile(fileName, err => err ? res.status(err.status).end() : console.log('Sent: ', fileName))
 })
 
-
-
 app.get('/:datestring', (req,res) => {
     
-    let myDate = (/^\d{8,}$/.test(req.params.datestring)) ? moment(req.params.datestring, "X") : moment(req.params.datestring, "MMMM D, YYYY");
-    
+    let myDate = (/^\d{8,}$/.test(req.params.datestring)) ? moment(req.params.datestring, "X") : moment(req.params.datestring, "MMMM D, YYYY"); 
     if(myDate.isValid()){
     res.json({
       unix: myDate.format("X"),
